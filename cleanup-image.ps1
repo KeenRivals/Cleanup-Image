@@ -5,12 +5,12 @@ Set-StrictMode -Version 2
 
 # Remove junk added to the user's profile
 $profilePaths = @(
-  "$env:userprofile\Contacts",
-  "$env:userprofile\Desktop",
-  "$env:userprofile\Documents",
-  "$env:userprofile\Music",
-  "$env:userprofile\Pictures",
-  "$env:userprofile\Videos"
+  "$env:systemdrive\*\Contacts",
+  "$env:systemdrive\*\Desktop",
+  "$env:systemdrive\*\Documents",
+  "$env:systemdrive\*\Music",
+  "$env:systemdrive\*\Pictures",
+  "$env:systemdrive\*\Videos"
 )
 
 Get-ChildItem $profilePaths | remove-item -recurse -force
