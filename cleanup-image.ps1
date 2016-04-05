@@ -19,11 +19,11 @@ Get-ChildItem $profilePaths | remove-item -recurse -force
 Start-Process -NoNewWindow -Wait -File dism -ArgumentList "/online /Cleanup-Image /StartComponentCleanup /ResetBase"
 
 # Cleanup downloaded Windows update files
-net stop wauserv
-Get-ChildItem C:\Windows\SoftwareDistribution | remove-item -recurse -force
+net stop wuauserv
+Get-ChildItem $env:windir\SoftwareDistribution | remove-item -recurse -force
 
 # Cleanup Windows temp folders
-Get-ChildItem C:\Windows\temp,$env:temp | remove-item -recurse -force
+Get-ChildItem $env:windir\temp,$env:temp | remove-item -recurse -force
 
 # Compact Windows Installer folder
 Start-Process -NoNewWindow -Wait -File compact -ArgumentList "/C /S:$env:windir\Installer"
