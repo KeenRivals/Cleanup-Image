@@ -5,6 +5,7 @@ Cleanup useless files and prepare a Windows image for capture.
 
 * PowerShell
 * DISM
+* Windows 8.1+ (for dism /cleanup-image command to work).
 
 # Process Overview 
 
