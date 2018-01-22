@@ -26,4 +26,4 @@ Get-ChildItem $env:windir\SoftwareDistribution | remove-item -recurse -force
 Get-ChildItem $env:windir\temp,$env:temp | remove-item -recurse -force
 
 # Compact Windows Installer folder
-Start-Process -NoNewWindow -Wait -File compact -ArgumentList "/C /S:$env:windir\Installer"
+Start-Process -NoNewWindow -Wait -File compact -ArgumentList "/C /EXE:LZX /S:$env:windir\Installer"
