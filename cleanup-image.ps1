@@ -29,6 +29,6 @@ Get-ChildItem $env:windir\temp,$env:temp | remove-item -recurse -force
 Start-Process -NoNewWindow -Wait -File compact -ArgumentList "/C /EXE:LZX /S:$env:windir\Installer"
 
 # Remove Appx packages for current user. They frequently prevent Sysprep from succeeding.
-Get-AppxPackage | Remove-AppxPackage -Online
+Get-AppxPackage | Remove-AppxPackage
 
 return 0
