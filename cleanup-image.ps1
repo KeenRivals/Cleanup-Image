@@ -20,15 +20,15 @@ Start-Process -NoNewWindow -Wait -File dism -ArgumentList "/online /Cleanup-Imag
 
 # Cleanup downloaded Windows update files
 net stop wuauserv
-Get-ChildItem $env:windir\SoftwareDistribution | remove-item -recurse -force
+Get-ChildItem $env:windir\SoftwareDistribution | remove-item -recurse -force -ErrorAction Ignore
 
 # Cleanup Windows temp folders
-Get-ChildItem $env:windir\temp,$env:temp | remove-item -recurse -force
+Get-ChildItem $env:windir\temp,$env:temp | remove-item -recurse -force -ErrorAction Ignore
 
 # Compact Windows Installer folder
 Start-Process -NoNewWindow -Wait -File compact -ArgumentList "/C /EXE:LZX /S:$env:windir\Installer"
 
 # Remove Appx packages for current user. They frequently prevent Sysprep from succeeding.
-Get-AppxPackage | Remove-AppxPackage
+Get-AppxPackage | Remove-AppxPackage -ErrorAction Ignore
 
 exit 0
