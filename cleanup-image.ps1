@@ -19,7 +19,7 @@ Get-ChildItem $profilePaths | remove-item -recurse -force
 Start-Process -NoNewWindow -Wait -File dism -ArgumentList "/online /Cleanup-Image /StartComponentCleanup /ResetBase"
 
 # Cleanup downloaded Windows update files
-net stop wuauserv
+Stop-Service "Wuauserv" -ErrorAction Ignore
 Get-ChildItem $env:windir\SoftwareDistribution | remove-item -recurse -force -ErrorAction Ignore
 
 # Cleanup Windows temp folders
