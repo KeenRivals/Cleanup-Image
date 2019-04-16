@@ -37,15 +37,12 @@ function Cleanup-Profiles {
 	)
 
 	Get-ChildItem $profilePaths | remove-item -recurse -force
-
-	return 0
 }
 
 # Delete downloaded Windows Update files
 function Cleanup-SoftwareDistribution {
 	Stop-Service "Wuauserv" -ErrorAction Ignore
 	Get-ChildItem $env:windir\SoftwareDistribution | remove-item -recurse -force -ErrorAction Ignore
-	return 0
 }
 
 Cleanup-Image
